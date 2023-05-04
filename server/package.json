@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@nestjs/apollo": "^11.0.5",
+    "@nestjs/core": "^9.4.0",
+    "@nestjs/graphql": "^11.0.5",
+    "@nestjs/passport": "^9.0.3",
+    "@prisma/client": "^4.13.0",
+    "bcryptjs": "^2.4.3",
+    "class-validator": "^0.14.0",
+    "connect-redis": "^7.0.1",
+    "express-session": "^1.17.3",
+    "graphql": "^16.6.0",
+    "graphql-tools": "^8.3.20",
+    "redis": "^4.6.6"
+},
