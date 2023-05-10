@@ -8,7 +8,7 @@ export class UserService {
   constructor(private prisma: PrismaService) {}
 
   // ts
-  async createUser(data): Promise<User> {
+  async create(data): Promise<User> {
     return this.prisma.user.create({
       data,
     });
