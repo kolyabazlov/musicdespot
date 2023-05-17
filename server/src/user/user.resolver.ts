@@ -1,7 +1,9 @@
-import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Resolver, Query } from '@nestjs/graphql';
 import { User } from './models/user.model';
 import { UserService } from './user.service';
-import { CreateInput } from './models/create.modal';
+import { UserCreateInput } from './models/user-create.input';
+import { UserLoginInput } from './models/user-login.input';
+import { UnauthorizedException } from '@nestjs/common';
 
 @Resolver(() => User)
 export class UserResolver {
@@ -13,11 +15,19 @@ export class UserResolver {
   }
 
   @Mutation(() => User)
-  async create(
-    // ts
-    @Args('data') data: CreateInput,
-  ) {
+  async createUser(@Args('data') data: UserCreateInput) {
     const user = await this.userService.create(data);
+
+    return user;
+  }
+
+  @Mutation(() => User)
+  async loginUser(@Args('data') data: UserLoginInput) {
+    const user = await this.userService.findByCredentials(data);
+
+    if (!data) {
+      return new UnauthorizedException();
+    }
 
     return user;
   }

@@ -12,7 +12,7 @@ export class UserUncheckedCreateInput {
     email!: string;
 
     @Field(() => String, {nullable:false})
-    name!: string;
+    password!: string;
 
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;

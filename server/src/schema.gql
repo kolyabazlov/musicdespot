@@ -2,18 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-input CreateInput {
-  email: String!
-  name: String!
-}
-
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
 
 type Mutation {
-  create(data: CreateInput!): User!
+  createUser(data: UserCreateInput!): User!
+  loginUser(data: UserLoginInput!): User!
 }
 
 type Query {
@@ -21,9 +17,19 @@ type Query {
 }
 
 type User {
-  createdAt: DateTime!
+  createdAt: DateTime
   email: String!
-  id: ID!
-  name: String!
-  updatedAt: DateTime!
+  id: ID
+  name: String
+  updatedAt: DateTime
+}
+
+input UserCreateInput {
+  email: String!
+  password: String!
+}
+
+input UserLoginInput {
+  email: String!
+  password: String!
 }

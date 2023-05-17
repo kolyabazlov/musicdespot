@@ -23,7 +23,7 @@ export class UserWhereInput {
     email?: StringFilter;
 
     @Field(() => StringFilter, {nullable:true})
-    name?: StringFilter;
+    password?: StringFilter;
 
     @Field(() => DateTimeFilter, {nullable:true})
     createdAt?: DateTimeFilter;

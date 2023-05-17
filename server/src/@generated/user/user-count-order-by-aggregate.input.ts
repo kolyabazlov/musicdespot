@@ -12,7 +12,7 @@ export class UserCountOrderByAggregateInput {
     email?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    name?: keyof typeof SortOrder;
+    password?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
     createdAt?: keyof typeof SortOrder;

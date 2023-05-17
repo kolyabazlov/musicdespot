@@ -1,29 +1,38 @@
-import { Field, GraphQLISODateTime, ID, ObjectType } from '@nestjs/graphql';
+import {
+  Field,
+  GraphQLISODateTime,
+  HideField,
+  ID,
+  ObjectType,
+} from '@nestjs/graphql';
 
 @ObjectType({})
 export class User {
   @Field(() => ID, {
-    nullable: false,
+    nullable: true,
   })
-  id!: number;
+  id: number;
 
   @Field(() => String, {
     nullable: false,
   })
   email!: string;
 
+  @HideField()
+  password!: string;
+
   @Field(() => String, {
-    nullable: false,
+    nullable: true,
   })
-  name!: string;
+  name: string;
 
   @Field(() => GraphQLISODateTime, {
-    nullable: false,
+    nullable: true,
   })
-  createdAt!: Date;
+  createdAt: Date;
 
   @Field(() => GraphQLISODateTime, {
-    nullable: false,
+    nullable: true,
   })
-  updatedAt!: Date;
+  updatedAt: Date;
 }

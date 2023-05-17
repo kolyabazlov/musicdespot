@@ -8,7 +8,7 @@ export class UserUpdateInput {
     email?: string;
 
     @Field(() => String, {nullable:true})
-    name?: string;
+    password?: string;
 
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;
