@@ -5,6 +5,8 @@ import { UserCreateInput } from './models/user-create.input';
 import { UserLoginInput } from './models/user-login.input';
 import { UnauthorizedException } from '@nestjs/common';
 
+// Code first resolver
+
 @Resolver(() => User)
 export class UserResolver {
   constructor(private userService: UserService) {}

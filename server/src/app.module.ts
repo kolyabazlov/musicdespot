@@ -4,10 +4,12 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { UserModule } from './user/user.module';
 import { PrismaService } from './prisma.service';
+import { PasswordModule } from './password/password.module';
 
 @Module({
   imports: [
     UserModule,
+    PasswordModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
@@ -17,30 +19,3 @@ import { PrismaService } from './prisma.service';
   providers: [PrismaService],
 })
 export class AppModule {}
-
-// @Module({
-//   imports: [
-//     RedisModule,
-//     AuthModule,
-//     UserModule,
-//     SessionModule,
-//   ],
-// })
-// export class AppModule {}
-
-// @Module({
-//   imports: [AuthModule],
-//   controllers: [AppController],
-//   providers: [AppService],
-// })
-// export class AppModule {
-//   configure(consumer: MiddlewareConsumer) {
-//     consumer
-//       .apply(AuthMiddleware)
-//       .exclude(
-//         { path: 'auth/login', method: RequestMethod.POST },
-//         { path: 'auth/logout', method: RequestMethod.POST },
-//       )
-//       .forRoutes('*');
-//   }
-// }
