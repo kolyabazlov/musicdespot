@@ -23,8 +23,8 @@
       }
     ],
     "paths": {
-      "@react": ["./node_modules/@types/react"],
-      "@styles/*": ["./src/styles/*"],
+      // "@react": ["./node_modules/@types/react"],
+      "@styles/*": ["./styles/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

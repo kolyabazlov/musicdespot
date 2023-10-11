@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        background: #000000
-    }
+  body {
+    /* background: #000000 */
+  }
 }
