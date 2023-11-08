@@ -57,6 +57,7 @@ export async function POST(request: Request) {
         email: req.email
       }
     });
+
     // here the answer is readable stream :(
     return Response.json(res);
   } catch (err: any) {

@@ -25,6 +25,8 @@ export default function Home() {
 
   return (
     <div className="bg-white">
+      {' '}
+      SIGN UP PAGE
       <form>
         <input type="email" name="email" value={email} placeholder="email to register" onChange={(e) => setEmail(e.target.value)}></input>
         <input type="text" name="username" value={username} placeholder="username " onChange={(e) => setUsername(e.target.value)}></input>
