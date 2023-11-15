@@ -1,36 +1,31 @@
-import { cleanup } from '@redux/actions';
 import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-interface AuthState {
-  user: any;
-  tokens: {
-    access_token: string | null;
-    refresh_token: string | null;
-  };
+export interface JwtTokens {
+  access_token: string | null;
+  refresh_token: string | null;
 }
 
-const initialState: AuthState = {
-  user: null,
+interface AuthState {
+  tokens: JwtTokens;
+}
+
+const initialState = {
   tokens: {
     access_token: null,
     refresh_token: null
   }
-};
+} as AuthState;
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setCredentials: (state, action) => {
-      state.user = action.payload.user;
-      state.tokens.access_token = action.payload.access_token;
-      state.tokens.refresh_token = action.payload.refresh_token;
+    setCredentials: (state, { payload: { tokens } }: PayloadAction<{ tokens: JwtTokens }>) => {
+      state.tokens = tokens;
     }
-  },
-  extraReducers: (builder) => {
-    builder.addCase(cleanup, () => initialState);
   }
 });
 

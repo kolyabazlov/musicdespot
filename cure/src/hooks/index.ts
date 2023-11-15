@@ -2,7 +2,7 @@
 // https://redux-toolkit.js.org/tutorials/typescript#define-typed-hooks
 
 // TODO: Стремный импорт
-import { RootState } from '@redux/index';
+import { RootState } from '@redux/store';
 import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
 import type { TypedUseSelectorHook } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';

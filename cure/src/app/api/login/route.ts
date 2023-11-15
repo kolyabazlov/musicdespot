@@ -6,7 +6,7 @@ const { AWS_COGNITO_REGION, AWS_COGNITO_USER_POOL_ID, AWS_COGNITO_CLIENT_ID } = 
 export async function POST(request: Request) {
   const { username, password } = await request.json();
 
-  console.log('request', username, password);
+  // console.log('request', username, password);
 
   Amplify.configure({
     Auth: {
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
   });
 
   try {
-    let result = await Auth.signIn({
+    let result: CognitoUser = await Auth.signIn({
       username,
       password
     });
