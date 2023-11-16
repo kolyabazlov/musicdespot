@@ -1,7 +1,7 @@
 'use client';
 
-import { useLoginMutation } from '@redux/api/auth/auth-api';
-import { useLazyGetNothingQuery } from '@redux/api/protected/protected-api';
+import { useLoginMutation } from '@redux/services/auth/auth-api';
+import { useLazyGetNothingQuery } from '@redux/services/protected/protected-api';
 import { setCredentials } from '@redux/slices/auth/auth-slice';
 
 import { useState } from 'react';
@@ -20,10 +20,7 @@ export default function Home() {
 
   const handleLogin = async (payload) => {
     try {
-      const tokens = await login(payload).unwrap();
-      dispatch(setCredentials({ tokens }));
-      console.log('tokenstokenstokenstokenstokenstokenstokenstokenstokens', tokens);
-      setUser(tokens);
+      await login(payload).unwrap();
       console.log('Logged in');
     } catch (err) {
       console.log('Error in handleLogin', err);

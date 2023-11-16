@@ -6,9 +6,9 @@ import authReducer from './slices/auth/auth-slice';
 import logger from 'redux-logger';
 import { persistReducer, persistStore } from 'redux-persist';
 
-import { authApi } from './api/auth/auth-api';
+import { authApi } from './services/auth/auth-api';
 import storage from 'redux-persist/lib/storage';
-import { protectedApi } from './api/protected/protected-api';
+import { protectedApi } from './services/protected/protected-api';
 
 export type AppThunk<T = Promise<unknown>> = ThunkAction<T, RootState, unknown, Action<string>>;
 // Infer the `RootState` and `AppDispatch` types from the store itself

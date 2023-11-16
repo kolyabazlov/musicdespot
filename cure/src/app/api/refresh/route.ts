@@ -1,32 +1,33 @@
-// import { Amplify, Auth } from 'aws-amplify';
+import { CognitoIdentityProviderClient, AuthFlowType, InitiateAuthCommand } from '@aws-sdk/client-cognito-identity-provider';
+import { NextResponse } from 'next/server';
 
-// const { AWS_COGNITO_REGION, AWS_COGNITO_USER_POOL_ID, AWS_COGNITO_CLIENT_ID } = process.env;
+const { AWS_COGNITO_REGION, AWS_COGNITO_USER_POOL_ID, AWS_COGNITO_CLIENT_ID } = process.env;
 
-// export async function POST(request: Request) {
-//   const req = await request.json();
+export async function POST(request: Request) {
+  const body = await request.json();
 
-//   console.log('request', req);
+  const params = {
+    AuthFlow: AuthFlowType.REFRESH_TOKEN_AUTH,
+    ClientId: AWS_COGNITO_CLIENT_ID,
+    UserPoolId: AWS_COGNITO_USER_POOL_ID,
+    AuthParameters: {
+      REFRESH_TOKEN: body?.refresh_token
+    }
+  };
 
-//   Amplify.configure({
-//     Auth: {
-//       userPoolId: AWS_COGNITO_USER_POOL_ID,
-//       region: AWS_COGNITO_REGION,
-//       userPoolWebClientId: AWS_COGNITO_CLIENT_ID
-//     }
-//   });
+  const cognitoClient = new CognitoIdentityProviderClient({
+    region: AWS_COGNITO_REGION
+  });
 
-//   try {
-//     const res = await Auth.signIn({
-//       username: req.username,
-//       password: req.password
-//     });
+  const initiateAuthCommand = new InitiateAuthCommand(params);
 
-//     // here the answer is readable stream :(
+  try {
+    const res = await cognitoClient.send(initiateAuthCommand);
 
-//     console.log('response login', res);
-//     return Response.json(res);
-//   } catch (err: any) {
-//     console.log('err', err);
-//     return err;
-//   }
-// }
+    console.log('re---------------', res);
+
+    return NextResponse.json(res, { status: res['$metadata'].httpStatusCode });
+  } catch (err: any) {
+    return NextResponse.json(err.toString(), { status: err['$metadata'].httpStatusCode });
+  }
+}

@@ -1,5 +1,5 @@
-export enum AUTH_ENPOINT {
+export enum AUTH_API_ENDPOINT {
   LOGIN = '/api/login',
   REGISTER = '/api/register',
-  REFRESH = '/api/refresh'
+  REFRESH_TOKEN = '/api/refresh'
 }
