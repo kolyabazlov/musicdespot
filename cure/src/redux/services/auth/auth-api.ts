@@ -3,6 +3,11 @@ import { InitiateAuthCommandOutput } from '@aws-sdk/client-cognito-identity-prov
 import { AuthState, setTokens } from '@redux/slices/auth/auth-slice';
 import { AUTH_API_ENDPOINT } from '@next-api/endpoints';
 
+interface LoginRequest {
+  username: string;
+  password: string;
+}
+
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({ baseUrl: '/' }),
@@ -30,6 +35,7 @@ export const authApi = createApi({
           dispatch(setTokens(data));
         } catch (err) {
           // `onError` side-effect
+          console.log('Error on RTK login', err);
         }
       }
     })

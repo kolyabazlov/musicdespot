@@ -26,7 +26,8 @@
       // "@react": ["./node_modules/@types/react"],
       "@styles/*": ["./styles/*"],
       "@next-api/*": ["./src/app/api/*"],
-      "@redux/*": ["./src/redux/*"]
+      "@redux/*": ["./src/redux/*"],
+      "@hooks/*": ["./src/hooks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

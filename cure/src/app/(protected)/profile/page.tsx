@@ -1,3 +1,6 @@
+'use client';
+
 export default function Page() {
-  return <>profile</>;
+  //{JSON.stringify(user)}
+  return <div>profile</div>;
 }

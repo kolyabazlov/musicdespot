@@ -1,8 +1,7 @@
 'use client';
 
 import { useLoginMutation } from '@redux/services/auth/auth-api';
-import { useLazyGetNothingQuery } from '@redux/services/protected/protected-api';
-import { setCredentials } from '@redux/slices/auth/auth-slice';
+import { useLazyGetUserQuery } from '@redux/services/protected/protected-api';
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -14,7 +13,7 @@ export default function Home() {
   const [password, setPassword] = useState('Password123!');
 
   const [login, { isLoading }] = useLoginMutation();
-  const [getNothing, { data, error }] = useLazyGetNothingQuery();
+  const [getUser, { data, error }] = useLazyGetUserQuery();
 
   const [user, setUser] = useState();
 
@@ -28,7 +27,7 @@ export default function Home() {
   };
 
   const mockApiRequest = async () => {
-    const res = await getNothing();
+    const res = await getUser();
     console.log('res', res);
   };
 
