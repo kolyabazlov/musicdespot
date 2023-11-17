@@ -4,11 +4,13 @@ import { NextResponse } from 'next/server';
 const { AWS_COGNITO_REGION } = process.env;
 
 export async function GET(request: Request) {
+  console.log('---------------------------------user request------------------------------------------------');
+
   const authorization = request.headers.get('authorization');
   const access_token = authorization ? authorization.split(' ').at(1) : null;
 
   if (!access_token) {
-    throw new Error('There is not authorization header in request to /api/user');
+    throw new Error("There is't authorization header in request to /api/user");
   }
 
   const params = {
@@ -23,7 +25,7 @@ export async function GET(request: Request) {
 
   try {
     const res = await cognitoClient.send(getUserCommand);
-    console.log('res', res);
+
     return NextResponse.json(res, { status: res['$metadata'].httpStatusCode });
   } catch (err: any) {
     return NextResponse.json(err.toString(), { status: err['$metadata'].httpStatusCode });

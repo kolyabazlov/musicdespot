@@ -28,8 +28,9 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
   await mutex.waitForUnlock();
   let result = await baseQuery(args, api, extraOptions);
 
-  // if (true) {
-  if (result.error && result.error.status === 401) {
+  if (true) {
+    // 400 "NotAuthorizedException: Access Token has expired"
+    // if (result.error && result.error.status === 401) {
     // checking whether the mutex is locked
     if (!mutex.isLocked()) {
       const release = await mutex.acquire();

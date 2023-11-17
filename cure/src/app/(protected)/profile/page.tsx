@@ -1,6 +1,9 @@
 'use client';
 
+import { useGetUserQuery } from '@redux/services/protected/protected-api';
+
 export default function Page() {
-  //{JSON.stringify(user)}
-  return <div>profile</div>;
+  const { data, isLoading, error } = useGetUserQuery();
+
+  return <div>Hello, {data?.Username}!</div>;
 }

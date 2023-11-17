@@ -35,7 +35,7 @@ export const authApi = createApi({
           dispatch(setTokens(data));
         } catch (err) {
           // `onError` side-effect
-          console.log('Error on RTK login', err);
+          console.log('Error on RTK auth-api login', err);
         }
       }
     })

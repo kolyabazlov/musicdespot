@@ -7,7 +7,7 @@ export const protectedApi = createApi({
   reducerPath: 'protectedApi',
   baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
-    getUser: builder.query<GetUserCommandOutput, any>({
+    getUser: builder.query<GetUserCommandOutput, void>({
       query: () => ({
         url: PROTECTED_API_ENDPOINT.USER
       }),
@@ -23,4 +23,4 @@ export const protectedApi = createApi({
   })
 });
 
-export const { useLazyGetUserQuery } = protectedApi;
+export const { useLazyGetUserQuery, useGetUserQuery } = protectedApi;

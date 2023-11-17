@@ -1,17 +1,19 @@
 'use client';
-import { useLazyGetUserQuery } from '@redux/services/protected/protected-api';
-import { useEffect } from 'react';
+import { useLazyGetUserQuery, useGetUserQuery } from '@redux/services/protected/protected-api';
+import { useRouter } from 'next/navigation';
+import { useEffect, useLayoutEffect } from 'react';
 
+// need to understand is useGetUserQuery don't make excessive requests
+// and that refresh token updates
 const useCognito = () => {
-  const [getUser, { data, error }] = useLazyGetUserQuery();
+  const router = useRouter();
+  const { data, isLoading, error } = useGetUserQuery();
 
-  const getCredentials = async () => {
-    const data = await getUser();
-  };
+  if (!data) {
+    router.push('/login');
+  }
 
-  useEffect(() => {
-    getCredentials();
-  }, []);
+  console.log('data', data);
 };
 
 export default useCognito;

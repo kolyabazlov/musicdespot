@@ -1,7 +1,6 @@
-// Создается копия useDispatch, useSelector, чтобы обойти TS Error
+// Creates copy of useDispatch, useSelector, to workaround TS Error
 // https://redux-toolkit.js.org/tutorials/typescript#define-typed-hooks
 
-// TODO: Стремный импорт
 import { RootState } from '@redux/store';
 import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
 import type { TypedUseSelectorHook } from 'react-redux';
