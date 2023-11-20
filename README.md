@@ -35,14 +35,6 @@ I chose AWS Cognito. **Why?** To be honest, every solution has both cons and pro
 #### Implementation. Features.
 
 - **Next.js 13**  
-I have a lot of experience in this and can easily start. 
-- **Redux (Toolkit)**  
-I decided to use **RTK Query** because it's evolving and good supported feature.
-- **AWS client-cognito-identity-provider**  
-It has built in support for cognito. Almost every implementation and example in the internet makes requests from client which means *sensetive* variables like *client_id* is open for everyone and makes it possible to DDoS auth system. Also I think it's bad practice to store .env variables publicly. So I developed a solution with Next.js API routes system. Every request goes to Next.js server and only then to Cognito.
- 
-
-- **Next.js 13**  
 I know my way around Next.js 13 and can get started easily.
 - **Redux (Toolkit)**  
 I chose **RTK Query** because it's continuously improving and well-supported.
