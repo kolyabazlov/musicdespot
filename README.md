@@ -22,6 +22,19 @@
     Blog
 </h2>
 
+### Part 2. Simplifying MVP.
+
+I realised that I need to make simplier start for user.  
+The first goal was this user flow steps: 
+
+1. User uploads list of liked tracks from any music stream service in a format "track - artist".
+2. User gets list of all tracks from artists in the uploaded list.
+3. User can mark a track in the presented list as "listened".
+
+Now I realised that I need to 
+
+---
+
 ### Part 1. Authentication.
 
 #### Chosen service.
