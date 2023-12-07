@@ -6,17 +6,24 @@
     <img src="./assets/mvp.png" alt="drawing" width="130" style="margin: auto"/>
 </p>
 
-1. User uploads list of liked tracks from any music stream service in a format "track - artist".
-2. User gets list of all tracks from artists in the uploaded list.
-3. User can mark a track in the presented list as "listened".
+1. User installs chrome extension.
+2. User can login in the extension.
+3. User can mark a track as "listened" on the page of music service. (at first on yandex music)
 
 <h2 align="center">
     Current state
 </h2>
 
-- Finishing up the auth system.
-- I'm trying to figure out the scheme of interaction of the Discogs API with the front part. 
-- Still thinking about the overall architecture of the application.
+- Using Amazon services - ApiGateway, Cognito, RDS, Lambda, AppSync, create a functionallity when user can mark track as "listened" on the yandex music website and then make a record to the database, that related to Cognito users database.
+
+<h2 align="center">
+    Done
+</h2>
+
+- Cognito setup
+- Auth system for musicdespot.com
+- Draft of chrome extension
+- Plan
 
 <h2 align="center">
     Blog
@@ -25,13 +32,13 @@
 ### Part 2. Simplifying MVP.
 
 I realised that I need to make simplier start for user.  
-The first goal was this user flow steps: 
+The first goal was the following steps of the user flow:
 
 1. User uploads list of liked tracks from any music stream service in a format "track - artist".
 2. User gets list of all tracks from artists in the uploaded list.
 3. User can mark a track in the presented list as "listened".
 
-Now I realised that I need to 
+Now I realised that I need to chrome extension that gives you a possibility to mark a track as "listened" on the reqired streming service.
 
 ---
 

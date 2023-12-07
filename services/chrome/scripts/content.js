@@ -35,14 +35,27 @@ window.addEventListener("load", (event) => {
             }
             addedNode.__redSquareAdded = true;
     
-            console.log(`Added: ${addedNode.textContent}, ${addedNode}`);
-            addedNode.addEventListener('click', ()=> console.log('clicked', addedNode.dataset.itemId))
+            // console.log(`Added: ${addedNode.textContent}, ${addedNode}`);
+            addedNode.addEventListener('click', ()=> {
+              chrome.runtime.sendMessage(
+                {
+                  contentScriptQuery: 'postTrackId',
+                  data: {
+                    track: addedNode.dataset.itemId
+                  },
+                  url: 'http://localhost:3000/track'
+                },
+                // response => console.log((response.text()))
+              );
+
+              console.log('clicked', addedNode.dataset.itemId)
+            })
           }
         }
         for (const removedNode of record.removedNodes) {
-          console.log(`Removed: ${removedNode.textContent}`);
+          // console.log(`Removed: ${removedNode.textContent}`);
         }
-        console.log(record.target.childNodes.length);
+        // console.log(record.target.childNodes.length);
       }
     
       // Reconnect the observer after processing mutations
